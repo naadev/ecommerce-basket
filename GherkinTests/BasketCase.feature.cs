@@ -167,18 +167,27 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Given an item with price 1.3 and 20% discount, Then discount is applied And total" +
-            " price will be 1.04")]
+        [Xunit.SkippableTheoryAttribute(DisplayName="Given a basket of n items, and price for this item is x and item discount total w" +
+            "ill be calculated")]
         [Xunit.TraitAttribute("FeatureTitle", "BasketCase")]
-        [Xunit.TraitAttribute("Description", "Given an item with price 1.3 and 20% discount, Then discount is applied And total" +
-            " price will be 1.04")]
-        public virtual void GivenAnItemWithPrice1_3And20DiscountThenDiscountIsAppliedAndTotalPriceWillBe1_04()
+        [Xunit.TraitAttribute("Description", "Given a basket of n items, and price for this item is x and item discount total w" +
+            "ill be calculated")]
+        [Xunit.InlineDataAttribute("1", "1.3", "10", "1.17", new string[0])]
+        [Xunit.InlineDataAttribute("2", "1.3", "10", "2.34", new string[0])]
+        [Xunit.InlineDataAttribute("3", "1.3", "10", "3.51", new string[0])]
+        [Xunit.InlineDataAttribute("4", "1.3", "10", "4.68", new string[0])]
+        [Xunit.InlineDataAttribute("5", "1.3", "10", "5.85", new string[0])]
+        public virtual void GivenABasketOfNItemsAndPriceForThisItemIsXAndItemDiscountTotalWillBeCalculated(string quantity, string price, string discount, string total, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Given an item with price 1.3 and 20% discount, Then discount is applied And total" +
-                    " price will be 1.04", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 18
+            argumentsOfScenario.Add("quantity", quantity);
+            argumentsOfScenario.Add("price", price);
+            argumentsOfScenario.Add("discount", discount);
+            argumentsOfScenario.Add("total", total);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Given a basket of n items, and price for this item is x and item discount total w" +
+                    "ill be calculated", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 19
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -198,14 +207,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 19
-  testRunner.Given("a basket with one item and price for this item is \'1.3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
 #line 20
-  testRunner.And("discount of 20% is applied on item price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Given(string.Format("a basket with \'{0}\' items and price for this item is \'{1}\'", quantity, price), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 21
-  testRunner.Then("total ammount to pay will be \'1.04\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.And(string.Format("discount of {0}% is applied on item price", discount), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 22
+  testRunner.Then(string.Format("total ammount to pay will be \'{0}\'", total), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -25,7 +25,8 @@ namespace GherkinTests
         [Given(@"a basket with '(.*)' items and price for this item is '(.*)'")]
         public void GivenABasketWithItemsAndPriceForThisItemIs(int quantity, double price)
         {
-            Basket.AddItem(new Item { Price = price }, quantity);
+            OneItem.Price = price;
+            Basket.AddItem(OneItem, quantity);
         }
         [Given(@"discount of (.*)% is applied on item price")]
         public void GivenDiscountOfIsAppliedOnItemPrice(double discount)
