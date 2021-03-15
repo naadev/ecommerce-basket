@@ -23,7 +23,12 @@ namespace GherkinTests
         [Given(@"a basket with one item and price for this item is '(.*)'")]
         public void GivenABasketWithOneItemAndPriceForThisItemIs(double price)
         {
-            Basket.AddItem(new Item { Price = price });
+            GivenABasketWithItemsAndPriceForThisItemIs(1, price);
+        }
+        [Given(@"a basket with '(.*)' items and price for this item is '(.*)'")]
+        public void GivenABasketWithItemsAndPriceForThisItemIs(int items, double price)
+        {
+            Basket.AddItem(new Item { Price = price }, quantity: items);
         }
 
 

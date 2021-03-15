@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GherkinTests
 {
@@ -10,12 +11,17 @@ namespace GherkinTests
 
         internal double Total()
         {
-            return Item != null ? Item.Price : 0.0;
+            double total = 0.0;
+            Items.ForEach(x => total += x.Price);
+            return Math.Round(total, 2);
         }
-        public Item Item { get; set; }
-        internal void AddItem(Item item)
+        public List<Item> Items { get; set; } = new List<Item>();
+        internal void AddItem(Item item, int quantity = 1)
         {
-            Item = item;
+            for (int i = 0; i < quantity; i++)
+            {
+                Items.Add(item);
+            }
         }
     }
 }
