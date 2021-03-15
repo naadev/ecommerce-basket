@@ -7,7 +7,7 @@ namespace GherkinTests
     [Binding]
     public class BasketCaseSteps
     {
-        Basket Basket { get; set; } = null;
+        Basket Basket { get; set; } = new Basket();
         [Given(@"an empty basket")]
         public void GivenAnEmptyBasket()
         {
@@ -19,5 +19,13 @@ namespace GherkinTests
         {
             Assert.True(total == Basket.Total());
         }
+
+        [Given(@"a basket with one item and price for this item is '(.*)'")]
+        public void GivenABasketWithOneItemAndPriceForThisItemIs(double price)
+        {
+            Basket.AddItem(new Item { Price = price });
+        }
+
+
     }
 }
