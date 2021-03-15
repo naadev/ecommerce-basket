@@ -8,6 +8,7 @@ namespace GherkinTests
 {
     internal class Item
     {
-        public double Price { get; set; }
+        public double Price { get; set; } = 0.0;
+        public double Discount { get; set; } = 0.0;
     }
 }
