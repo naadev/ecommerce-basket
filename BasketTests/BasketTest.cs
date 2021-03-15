@@ -40,5 +40,6 @@ namespace BasketTests
             basket.AddItem(new Item { Price = 1.3 },4);
             Assert.True(basket.Total() == 5.2);
         }
+
     }
 }
