@@ -20,6 +20,14 @@ namespace BasketTests
             basket.AddItem(new Item { Price = 1.3 });
             Assert.True(basket.Total() == 1.3);
         }
+        [Fact(DisplayName = "Given a basket with 2 items, And price for this item is 1.3, Then total ammount to pay will be 2.6")]
+        public void TestC()
+        {
+            var basket = new Basket();
+            basket.AddItem(new Item { Price = 1.3 });
+            basket.AddItem(new Item { Price = 1.3 });
+            Assert.True(basket.Total() == 2.6);
+        }
 
     }
 }

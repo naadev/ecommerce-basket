@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace BasketTests
 {
@@ -10,12 +12,14 @@ namespace BasketTests
 
         internal double Total()
         {
-            return Item != null ? Item.Price : 0.0;
+            double total = 0.0;
+            Items.ForEach(x => total = total + x.Price);
+            return total;
         }
-        public Item Item { get; set; }
+        public List<Item> Items { get; set; } = new List<Item>();
         internal void AddItem(Item item)
         {
-            Item = item;
+            Items.Add(item);
         }
     }
 }
