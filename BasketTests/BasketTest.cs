@@ -24,5 +24,12 @@ namespace BasketTests
             basket.AddItem(new Item { Price = price }, quantity);
             Assert.True(basket.Total() == total);
         }
+        [Fact(DisplayName = "Given an item with price 1.3 and 20% discount, Then discount is applied And total price will be 1.04")]
+        public void TestG()
+        {
+            var basket = new Basket();
+            basket.AddItem(new Item { Price = 1.3, Discount = 20.0 });
+            Assert.True(basket.Total() == 1.04);
+        }
     }
 }

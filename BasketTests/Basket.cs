@@ -13,7 +13,7 @@ namespace BasketTests
         internal double Total()
         {
             double total = 0.0;
-            Items.ForEach(x => total += x.Price);
+            Items.ForEach(x => total += (x.Price * (100 - x.Discount) / 100));
             return Math.Round(total,2);
         }
         public List<Item> Items { get; set; } = new List<Item>();
