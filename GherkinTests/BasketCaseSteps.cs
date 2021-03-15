@@ -12,7 +12,12 @@ namespace GherkinTests
         [Given(@"an empty basket")]
         public void GivenAnEmptyBasket()
         {
-            Basket = new Basket();
+            GivenAFidelityDiscountOf(0.0);
+        }
+        [Given(@"a fidelity discount of (.*)%")]
+        public void GivenAFidelityDiscountOf(double fidelityDiscount)
+        {
+            Basket = new Basket(fidelityDiscount);
         }
 
         Item OneItem = new Item();
@@ -28,6 +33,13 @@ namespace GherkinTests
             OneItem.Price = price;
             Basket.AddItem(OneItem, quantity);
         }
+        [Given(@"'(.*)' items with price '(.*)' and discount value of (.*)%")]
+        public void GivenItemsWithPriceAndDiscountValueOf(int quantity, double price, double discount)
+        {
+            OneItem.Price = price;
+            OneItem.Discount = discount;
+            Basket.AddItem(OneItem, quantity);
+        }
         [Given(@"discount of (.*)% is applied on item price")]
         public void GivenDiscountOfIsAppliedOnItemPrice(double discount)
         {
@@ -39,6 +51,7 @@ namespace GherkinTests
         {
             Assert.True(total == Basket.Total());
         }
+
 
     }
 }

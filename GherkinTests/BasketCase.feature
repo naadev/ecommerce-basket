@@ -27,3 +27,9 @@ Scenario Outline: Given a basket of n items, and price for this item is x and it
 		| 3        | 1.3   | 10       | 3.51  |
 		| 4        | 1.3   | 10       | 4.68  |
 		| 5        | 1.3   | 10       | 5.85  |
+
+Scenario: Fidelity Discount
+        Given a fidelity discount of 10% 
+        And '2' items with price '2.0' and discount value of 50%
+        And '2' items with price '2.0' and discount value of 50%
+		Then total ammount to pay will be '3.6'
