@@ -13,13 +13,16 @@ namespace BasketTests
         internal double Total()
         {
             double total = 0.0;
-            Items.ForEach(x => total = total + x.Price);
-            return total;
+            Items.ForEach(x => total += x.Price);
+            return Math.Round(total,2);
         }
         public List<Item> Items { get; set; } = new List<Item>();
-        internal void AddItem(Item item)
+        internal void AddItem(Item item, int quantity=1)
         {
-            Items.Add(item);
+            for (int i=0;i< quantity; i++)
+            {
+                Items.Add(item);
+            }
         }
     }
 }
